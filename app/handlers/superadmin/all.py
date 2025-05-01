@@ -1,0 +1,21 @@
+from aiogram import Router
+
+from app.handlers.superadmin.create_test_admin_superadmin import router as create_test_router
+from app.handlers.superadmin.add_admin import router as add_admin_router
+from app.handlers.superadmin.remove_admin import router as remove_admin_router
+from app.handlers.superadmin.delete_test_allAdmins import router as delete_test_router
+from app.handlers.superadmin.view_test_allAdmin import router as view_tests_router
+from app.handlers.superadmin.cancel_all import router as cancel_all_router
+from app.handlers.superadmin.test_natijalar import router as test_natijalar_router
+
+router = Router()
+
+router.include_router(add_admin_router)
+router.include_router(remove_admin_router)
+router.include_router(create_test_router)
+router.include_router(delete_test_router)
+router.include_router(view_tests_router)
+router.include_router(test_natijalar_router)
+router.include_router(cancel_all_router)
+
+
