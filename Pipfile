@@ -7,7 +7,7 @@ name = "pypi"
 reportlab = "*"
 aiogram = "*"
 requests = "*"
-
+python-dotenv = "*"
 
 [dev-packages]
 
