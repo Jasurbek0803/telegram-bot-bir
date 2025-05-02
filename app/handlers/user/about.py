@@ -11,7 +11,9 @@ async def about_us(message: Message):
                          "➡️Mental arifmetika \n"
                          "➡️Kompyuter kurslari \n"
                          "➡️Robototexnika \n"
-                         "➡️Ixtisoslashgan maktablarga tayyorlov \n\n"
+                         "➡️Ixtisoslashgan maktablarga tayyorlov \n"
+                         "️➡️ ️Muammoni hal qilish \n"
+                         "➡️Tanqidiiy Fikrlash \n\n"
                          "Mo'ljal: Bek to'yxonasi🏢 \n\n"
                          "☎️Qabulxona:⤵️\n"
-                         "+998941862614 +998943293730\n")
+                         "+998941862614\n +998943293730\n")
