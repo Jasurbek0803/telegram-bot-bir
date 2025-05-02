@@ -104,11 +104,12 @@ class Database:
 
     def get_test_results_by_author_id(self, author_id: int) -> list[tuple]:
         sql = """
-              SELECT u.full_name, r.code, r.correct_answer, r.incorrect_answer, r.percentage
-                FROM results r
-                JOIN tests t ON r.code = t.code
-                Join users u On r.user_id = u.user_id
-                WHERE t.author_id = ?
+              SELECT u.full_name, r.code, r.correct_answer, r.incorrect_answer, r.percentage, r.timestamp
+        FROM results r
+        JOIN tests t ON r.code = t.code
+        JOIN users u ON r.user_id = u.user_id
+        WHERE t.author_id = ?
+        ORDER BY r.code, r.percentage DESC, r.timestamp ASC
               """
         return self.execute(sql, (author_id,),fetchall=True)
 
@@ -217,6 +218,11 @@ class Database:
     def get_all_user(self):
         sql = "SELECT * FROM users"
         return self.execute(sql, fetchall=True)
+
+    def get_all_user_id(self):
+        sql = "SELECT user_id FROM users"
+        return self.execute(sql, fetchall=True)
+
 
     # ✅ Testni code orqali topish
     def get_test_by_code(self, code: int):

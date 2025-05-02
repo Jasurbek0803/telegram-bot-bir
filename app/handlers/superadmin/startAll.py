@@ -47,7 +47,8 @@ async def start_handler(message: Message):
     else:
         # If the user is not registered, ask for registration
         await message.answer(
-            f"Assalomu alaykum, {message.from_user.full_name}!\n\nBotdan foydalanish uchun Registratsiya tugmasini bosing:",
+            f"Assalomu alaykum, {message.from_user.full_name}!.\n\n"
+            f"Botdan foydalanish uchun Registratsiya tugmasini bosing:",
             reply_markup=registrationUser
         )
 

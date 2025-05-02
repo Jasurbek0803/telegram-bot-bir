@@ -51,14 +51,14 @@ async def test_yechganlar(message: Message, state: FSMContext):
     rank = 1
 
     for row in result_data:
-        full_name, code, correct, incorrect, percentage = row
+        full_name, code, correct, incorrect, percentage, created_at = row
 
         if current_code != code:
             current_code = code
             rank = 1
             response += f"\n🔑 *Test kodi:* {code}\n"
 
-        response += (f"{rank}.{full_name} | {correct}/{correct+incorrect} | 📈{percentage}%\n")
+        response += (f"{rank}. {full_name} | {correct}/{correct + incorrect} | 📈{percentage}%\n")
         rank += 1
 
     await message.answer(response, parse_mode="Markdown")

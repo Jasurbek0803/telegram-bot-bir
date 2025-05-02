@@ -105,11 +105,12 @@ async def receive_answers(message: Message, state: FSMContext):
     )
 
     await message.answer(
-        f"✅ Test natijasi:\n"
-        f"Jami savollar: {len(correct_answers)}\n"
-        f"To‘g‘ri javoblar: {correct}\n"
-        f"Noto‘g‘ri javoblar: {wrong}\n"
-        f"Foiz: {percent}%\n"
-        f"📌 Natijangiz bazaga saqlandi."
+        f"📄 Sizning yechgan test natijasi:\n\n"
+        f"📚 Jami savollar: {len(correct_answers)} ta\n"
+        f"✅ To‘g‘ri javoblar: {correct} ta\n"
+        f"🚫 Noto‘g‘ri javoblar: {wrong} ta\n"
+        f"📈 Foiz: {percent}%\n"
+        f"📌 Natijangiz qabul qilindi.\n\n"
+        f"👋 Keyingi testgacha xayr"
     )
     await state.clear()
