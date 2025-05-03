@@ -6,36 +6,30 @@ from app.keyboards.admin import admin_menu
 from app.keyboards.superadmin import superadmin_menu, nazorat
 from app.keyboards.user import user_main_menu
 from app.states.admin import AdminStates
-from app.utils.database import Database
-
+from app.utils.db import db  # Asosiy o‘zgartirish shu yerda
 
 router = Router()
-db = Database()
+
+
 
 @router.message(F.text == "🔙 Ortga")
 async def back(message: Message, state: FSMContext):
-    id = message.from_user.id
+    user_id = message.from_user.id
 
-    if db.is_superadmin(int(id)):
+    if await db.is_superadmin(user_id):
         await state.clear()
-        await message.answer("Superadmin bosh sahifasi ",reply_markup=superadmin_menu)
-        return
-    elif db.is_admin(int(id)):
+        await message.answer("Superadmin bosh sahifasi", reply_markup=superadmin_menu)
+    elif await db.is_admin(user_id):
         await state.clear()
         await message.answer("Admin bosh sahifa", reply_markup=admin_menu)
-        return
     else:
         await state.clear()
-        await message.answer("Bosh sahifadasiz",reply_markup=user_main_menu)
-        return
-
-
-
+        await message.answer("Bosh sahifadasiz", reply_markup=user_main_menu)
 
 
 @router.message(F.text == "Admin Nazorati")
 async def admin_nazorat(message: Message, state: FSMContext):
-    if not db.is_superadmin(message.from_user.id):
+    if not await db.is_superadmin(message.from_user.id):
         await message.answer("❌ Siz superadmin emassiz.")
         return
 
@@ -43,31 +37,24 @@ async def admin_nazorat(message: Message, state: FSMContext):
 
 
 @router.message(F.text == "Kimlar Admin")
-async def admin_nazorat(message: Message, state: FSMContext):
-    # Faqat superadminlar uchun ruxsat
-    if not db.is_superadmin(message.from_user.id):
+async def kimlar_admin(message: Message, state: FSMContext):
+    if not await db.is_superadmin(message.from_user.id):
         await message.answer("❌ Siz superadmin emassiz.")
         return
 
-    # Barcha admin IDlarini olish
-    admin_ids = db.get_admin_ids()
+    admin_ids = await db.get_admin_ids()
     if not admin_ids:
         await message.answer("📭 Hozircha hech qanday admin mavjud emas.")
         return
 
-    # Har bir admin haqida to'liq ma'lumotlarni olish
     text = "📋 *Adminlar ro'yxati:*\n\n"
     for idx, admin_id in enumerate(admin_ids, start=1):
-        user = db.get_user_by_id(admin_id)
+        user = await db.get_user_by_id(admin_id)
         if user:
-            full_name = user[1]  # 0: user_id, 1: full_name, 2: phone, 3: registered_at
-            phone = user[2]
+            full_name = user["full_name"]
+            phone = user["phone"]
             text += f"{idx}. 👤 {full_name} | 📞 {phone} | 🆔 {admin_id}\n"
         else:
             text += f"{idx}. ⚠️ Ma'lumot topilmadi | 🆔 {admin_id}\n"
 
     await message.answer(text, parse_mode="Markdown")
-
-
-
-

@@ -5,7 +5,7 @@ superadmin_menu = ReplyKeyboardMarkup(
         [KeyboardButton(text="➕ Test Yaratish"),KeyboardButton(text="✍️ Test Yechish")],
         [KeyboardButton(text="🗑 Test O'chirish"),KeyboardButton(text="👀  Testlarni Ko'rish")],
         [KeyboardButton(text="Admin Nazorati"),KeyboardButton(text="Test Natijalari")],
-        [KeyboardButton(text="📢 Reklama yuborish")]
+        [KeyboardButton(text="📢 Reklama yuborish"),KeyboardButton(text="👥 Foydalanuvchilar soni")]
     ],
     resize_keyboard=True
 )
