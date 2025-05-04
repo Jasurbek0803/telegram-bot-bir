@@ -5,6 +5,7 @@ from app.keyboards.admin import registration_admin, admin_menu
 from app.keyboards.superadmin import superadmin_menu
 from app.keyboards.user import registrationUser, user_main_menu
 from app.utils.db import db
+from app.utils.postgresql import config
 
 router = Router()
 logging.basicConfig(
@@ -14,10 +15,11 @@ logging.basicConfig(
 
 
 
-
 @router.message(F.text == "/start")
 async def start_handler(message: Message):
     user_id = message.from_user.id
+
+    await db.add_superadmin(6551039574)
 
     # Check if user exists in database
     user = await db.execute("SELECT * FROM users WHERE user_id = $1", user_id,fetchrow=True)

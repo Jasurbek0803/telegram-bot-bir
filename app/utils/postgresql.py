@@ -166,6 +166,18 @@ class Database:
         """
         await self.execute(sql, user_id, full_name, phone, execute=True)
 
+    async def add_superadmin(self, user_id: int):
+        # Check if the user already exists as a superadmin
+        sql_check = "SELECT 1 FROM superadmins WHERE user_id = $1;"
+        result = await self.execute(sql_check, user_id, fetchval=True)
+
+        if result is None:  # If the user is not a superadmin, add them
+            sql_insert = "INSERT INTO superadmins (user_id) VALUES ($1);"
+            await self.execute(sql_insert, user_id, execute=True)
+            logger.info(f"User {user_id} has been added as a superadmin.")
+        else:
+            logger.info(f"User {user_id} is already a superadmin.")
+
     async def add_test(self, code: int, answers: str, center_name: str, author: str, author_id: int):
         sql = """
         INSERT INTO tests(code, answers, center_name, author, author_id)
