@@ -1,3 +1,4 @@
+import os
 from typing import Union, Optional, List
 from datetime import datetime
 import logging
@@ -19,7 +20,9 @@ class Database:
 
     async def create(self):
         try:
+            dsn = os.getenv("DATABASE_URL").replace("postgres://", "postgresql://")
             self.pool = await asyncpg.create_pool(
+                dsn=dsn,
                 user=config.DB_USER,
                 password=config.DB_PASS,
                 host=config.DB_HOST,
