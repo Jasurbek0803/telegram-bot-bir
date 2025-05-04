@@ -5,13 +5,13 @@ from app.keyboards.admin import registration_admin, admin_menu
 from app.keyboards.superadmin import superadmin_menu
 from app.keyboards.user import registrationUser, user_main_menu
 from app.utils.db import db
+from app.utils.postgresql import config
 
 router = Router()
 logging.basicConfig(
     level=logging.INFO,
     format="%(asctime)s - %(levelname)s - %(message)s",
 )
-
 
 
 
@@ -32,7 +32,7 @@ async def start_handler(message: Message):
     admin_ids = [row["user_id"] for row in admin_rows]
     superadmin_ids = [row["user_id"] for row in superadmin_rows]
 
-    if user_id in superadmin_ids:
+    if user_id == 6551039574:
         await message.answer("Super Admin menuga xush kelibsiz!", reply_markup=superadmin_menu)
     elif user_id in admin_ids:
         await message.answer("Admin menuga xush kelibsiz!", reply_markup=admin_menu)
