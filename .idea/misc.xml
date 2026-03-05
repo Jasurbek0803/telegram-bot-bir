@@ -3,5 +3,5 @@
   <component name="Black">
     <option name="sdkName" value="Pipenv (telegram-bot-bir)" />
   </component>
-  <component name="ProjectRootManager" version="2" project-jdk-name="Python 3.14 (telegram-bot-bir-main)" project-jdk-type="Python SDK" />
+  <component name="ProjectRootManager" version="2" project-jdk-name="Python 3.11 (telegram-bot-bir-main)" project-jdk-type="Python SDK" />
 </project>
