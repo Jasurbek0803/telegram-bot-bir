@@ -1,6 +1,6 @@
 from aiogram import Router, F
 from aiogram.types import Message
-from app.utils.db import db # Sizning klassingiz
+from utils.db import db # Sizning klassingiz
 
 router = Router()
 

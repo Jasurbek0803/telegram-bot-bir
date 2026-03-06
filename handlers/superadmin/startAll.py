@@ -1,11 +1,10 @@
 import logging
 from aiogram import Router, F
 from aiogram.types import Message
-from app.keyboards.admin import registration_admin, admin_menu
-from app.keyboards.superadmin import superadmin_menu
-from app.keyboards.user import registrationUser, user_main_menu
-from app.utils.db import db
-from app.utils.postgresql import config
+from keyboards.admin import admin_menu
+from keyboards.superadmin import superadmin_menu
+from keyboards.user import registrationUser, user_main_menu
+from utils.db import db
 
 router = Router()
 logging.basicConfig(

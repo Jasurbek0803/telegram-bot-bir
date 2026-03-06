@@ -2,8 +2,8 @@ from aiogram import Router, F
 from aiogram.types import Message
 from aiogram.fsm.context import FSMContext
 
-from app.states.admin import AdminStates
-from app.utils.db import db # asyncpg bilan mos klass
+from states.admin import AdminStates
+from utils.db import db # asyncpg bilan mos klass
 
 router = Router()
 

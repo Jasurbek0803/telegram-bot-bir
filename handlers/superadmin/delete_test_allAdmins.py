@@ -2,11 +2,11 @@ from aiogram import Router, F
 from aiogram.types import Message
 from aiogram.fsm.context import FSMContext
 
-from app.keyboards.admin import admin_menu
-from app.keyboards.superadmin import superadmin_menu
-from app.keyboards.user import user_main_menu
-from app.states.admin import AdminStates
-from app.utils.db import db  # asyncpg versiyasi
+from keyboards.admin import admin_menu
+from keyboards.superadmin import superadmin_menu
+from keyboards.user import user_main_menu
+from states.admin import AdminStates
+from utils.db import db  # asyncpg versiyasi
 
 
 router = Router()

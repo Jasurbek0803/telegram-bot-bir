@@ -1,11 +1,11 @@
 import os
-from typing import Union, Optional, List
+from typing import Optional, List
 from datetime import datetime
 import logging
 import asyncpg
 from asyncpg import Pool
 
-from app.config import Config
+from config import Config
 
 # Logger sozlash
 logger = logging.getLogger(__name__)

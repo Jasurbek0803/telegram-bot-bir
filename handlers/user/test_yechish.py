@@ -3,12 +3,12 @@ from aiogram import Router, F
 from aiogram.types import Message
 from aiogram.fsm.context import FSMContext
 
-from app.keyboards.admin import admin_menu
-from app.keyboards.superadmin import superadmin_menu
-from app.keyboards.user import user_main_menu, back_button
-from app.states.test_yechish import SolveTestStates
+from keyboards.admin import admin_menu
+from keyboards.superadmin import superadmin_menu
+from keyboards.user import user_main_menu, back_button
+from states.test_yechish import SolveTestStates
 
-from app.utils.db import db  # PostgreSQL uchun Database klassi
+from utils.db import db  # PostgreSQL uchun Database klassi
 
 router = Router()
 

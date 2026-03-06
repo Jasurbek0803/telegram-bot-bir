@@ -1,16 +1,15 @@
 import re
-from datetime import datetime
 
 from aiogram import Router, F
 from aiogram.types import Message
 from aiogram.fsm.context import FSMContext
 from aiogram.types import Contact
 
-from app.keyboards.admin import admin_menu
-from app.keyboards.superadmin import superadmin_menu
-from app.keyboards.user import contact_keyboard, user_main_menu, settings_in
-from app.states.registration import RegistrationStates
-from app.utils.db import db
+from keyboards.admin import admin_menu
+from keyboards.superadmin import superadmin_menu
+from keyboards.user import contact_keyboard, user_main_menu, settings_in
+from states.registration import RegistrationStates
+from utils.db import db
 
 router = Router()
 

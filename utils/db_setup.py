@@ -1,7 +1,7 @@
 # utils/db_setup.py
 
-from app.config import Config
-from app.utils.postgresql import Database
+from config import Config
+from utils.postgresql import Database
 
 db = Database()
 

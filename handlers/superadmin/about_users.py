@@ -1,13 +1,11 @@
 from aiogram import Router, F
 from aiogram.types import Message
 from aiogram.fsm.context import FSMContext
-from aiogram import Bot
 
-from app.keyboards.admin import admin_menu
-from app.keyboards.superadmin import superadmin_menu
-from app.keyboards.user import user_main_menu
-from app.states.admin import AdminStates
-from app.utils.db import db
+from keyboards.admin import admin_menu
+from keyboards.superadmin import superadmin_menu
+from keyboards.user import user_main_menu
+from utils.db import db
 
 router = Router()
 

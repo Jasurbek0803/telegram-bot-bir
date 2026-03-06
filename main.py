@@ -5,12 +5,11 @@ from aiogram.enums.parse_mode import ParseMode
 from aiogram.types import BotCommand
 from aiogram.fsm.storage.memory import MemoryStorage
 
-from app.config import load_config
-from app.handlers.superadmin import startAll
-from app.handlers.user import registrationUser, test_yechish, about
-from app.handlers.superadmin.all import router as superadmin_router
-from app.utils.db_setup import sync_admins_from_config
-from app.utils.db import db
+from config import load_config
+from handlers.superadmin import startAll
+from handlers.user import registrationUser, about, test_yechish
+from handlers.superadmin import router as superadmin_router
+from utils import db
 
 async def main():
     # Config va DB ni chaqiramiz
